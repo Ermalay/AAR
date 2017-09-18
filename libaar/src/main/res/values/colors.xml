@@ -5,5 +5,7 @@
     <color name="colorPrimaryDark">#4399CD</color>
     <color name="colorAccent">#F50057</color>
     <color name="gray_light">#E0E0E0</color>
+    <color name="colorMyGray">#f1f1f1</color>
+    <color name="colorMyStroke">#f41313</color>
 
 </resources>

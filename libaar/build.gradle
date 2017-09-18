@@ -28,4 +28,13 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
+
+    // Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    //flexbox
+    compile 'com.google.android:flexbox:0.1.3'
 }

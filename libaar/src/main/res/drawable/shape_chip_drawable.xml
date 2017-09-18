@@ -10,4 +10,14 @@
         android:top="@dimen/chip_padding" />
 
     <corners android:radius="30dp" />
+
+    <stroke
+        android:width="1dip"
+        android:color="#A50"/>
+
+    <gradient
+        android:startColor="@color/colorMyGray"
+        android:endColor="@color/colorPrimaryDark"
+        android:type="linear"/>
+
 </shape>
