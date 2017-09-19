@@ -1,6 +1,7 @@
 package com.example.libaar;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -58,17 +59,20 @@ public class GravatarChip extends LinearLayout {
 
         // добавляем сам текст email'a
         TextView textView = new TextView(context);
-        textView.setText(email);
+        textView.setText(cropString(email));
+        textView.setPadding(0, 0, 15, 0);
         addView(textView);
+    }
 
+    private String cropString (String string){
+        SharedPreferences settings = context.getSharedPreferences("my_settings", Context.MODE_PRIVATE);
+        boolean b = settings.getBoolean("is_at", true);
 
-
-
-//        textView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, email, Toast.LENGTH_LONG);
-//            }
-//        });
+        if (b){
+            return string;
+        } else {
+            String result = string.substring(0, string.indexOf("@"));
+            return result;
+        }
     }
 }

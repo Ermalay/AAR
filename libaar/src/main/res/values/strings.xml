@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Lib AAR</string>
+    <string name="settings">Настройка вида email</string>
+    <string name="dialog_title">Выбрать вид отображения email</string>
+    <string name="not_show_at">Не показывать @</string>
+    <string name="show_at">Показывать @</string>
+    <string name="off">_</string>
+    <string name="on">\@</string>
+    <string name="full_email">Полный e-mail: </string>
+
+
 </resources>

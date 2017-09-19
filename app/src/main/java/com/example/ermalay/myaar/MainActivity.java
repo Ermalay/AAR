@@ -1,8 +1,14 @@
 package com.example.ermalay.myaar;
 
+import android.content.SharedPreferences;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.libaar.Dialog;
 import com.example.libaar.MyFlexbox;
 
 /**
@@ -23,9 +29,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // передаём текст
+        // передаём текст для обработки и отображения
         myFlexbox = new MyFlexbox(this, myString);
 
         setContentView(myFlexbox);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.view_email:
+                showEditDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        Dialog dialog = new Dialog();
+        dialog.show(fm, "fragment_edit_email");
     }
 }
