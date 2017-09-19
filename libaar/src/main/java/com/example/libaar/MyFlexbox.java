@@ -1,7 +1,9 @@
 package com.example.libaar;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.flexbox.FlexboxLayout;
 
@@ -27,13 +29,22 @@ public class MyFlexbox extends FlexboxLayout {
         String[] arrStrings = text.split(" ");
 
         // перебираем массив слов
-        for (String word :
+        for (final String word :
                 arrStrings) {
 
             // если слово по всем признакам является email'ом, то
             if (isWordEmail(word)){
                 // с помощью класса GravatarChip делаем из него MaterialDesign chip и
                 GravatarChip gravatarChip = new GravatarChip(context, word);
+
+                // если надо получить по клику адрес email, то можно сделать это тут
+                gravatarChip.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, word, Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 // добавляем этот chip к view (FlexboxLayout)
                 addView(gravatarChip);
             }else {

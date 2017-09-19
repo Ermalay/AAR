@@ -2,8 +2,10 @@ package com.example.libaar;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +46,7 @@ public class GravatarChip extends LinearLayout {
                 // где берём фото
                 .load("https://www.gravatar.com/avatar/" + hash)
                 // что показываеем, если не смогли притащить из инета
-                .placeholder(android.R.drawable.ic_secure)
+                .placeholder(R.drawable.ok24)
                 // меняем размер фото
                 .resize(48, 48)
                 // где показываем фото
@@ -58,5 +60,15 @@ public class GravatarChip extends LinearLayout {
         TextView textView = new TextView(context);
         textView.setText(email);
         addView(textView);
+
+
+
+
+//        textView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(context, email, Toast.LENGTH_LONG);
+//            }
+//        });
     }
 }
