@@ -1,15 +1,16 @@
 package com.example.ermalay.myaar;
 
-import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.libaar.ChoiceDialog;
 import com.example.libaar.Dialog;
 import com.example.libaar.MyFlexbox;
+
+
 
 /**
  * Этот класс знает только кто и что будет показывать, а как показывать - знают другие
@@ -22,12 +23,23 @@ public class MainActivity extends AppCompatActivity {
             "чай и прочее и kavkazoff@mail.ru что-то ещё всякое разное. " +
             "И дизайнер из меня - барахло! myemailaddress@example.com";
 
+//    private Realm realm;
+
     // класс, наследуемый от FlexboxLayout
     MyFlexbox myFlexbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        Realm.init(this);
+//
+//        realm = Realm.getDefaultInstance();
+//        realm.beginTransaction();
+//        Text text = realm.createObject(Text.class);
+//        text.setText(myString);
+//        realm.commitTransaction();
+
 
         // передаём текст для обработки и отображения
         myFlexbox = new MyFlexbox(this, myString);
@@ -45,17 +57,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.view_email:
-                showEditDialog();
+            case R.id.view_choice_email:
+                showEditDialogChoiceEmail();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void showEditDialog() {
+    public void showEditDialogChoiceEmail() {
         FragmentManager fm = getSupportFragmentManager();
-        Dialog dialog = new Dialog();
-        dialog.show(fm, "fragment_edit_email");
+        ChoiceDialog choiceDialog = new ChoiceDialog();
+        choiceDialog.show(fm, "fragment_edit_choice_email");
     }
 }
