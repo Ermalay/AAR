@@ -1,7 +1,9 @@
 package com.example.libaar;
 
 
-public class Text  {
+import io.realm.RealmObject;
+
+public class IncomeText extends RealmObject {
 
     private String text;
 

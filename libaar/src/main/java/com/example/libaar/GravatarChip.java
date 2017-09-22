@@ -64,13 +64,17 @@ public class GravatarChip extends LinearLayout {
         addView(textView);
     }
 
+    // тут режем или не режем e-mail (воозвращаем String до @ или полный), если чего, то полный e-mail
     private String cropString (String string){
         SharedPreferences settings = context.getSharedPreferences("my_settings", Context.MODE_PRIVATE);
         boolean b = settings.getBoolean("is_at", true);
 
+        // если в преференсах сидит true, то вернём как есть
         if (b){
             return string;
         } else {
+
+            // если в преференсах сидит false, то вернём e-mail до знака @
             String result = string.substring(0, string.indexOf("@"));
             return result;
         }

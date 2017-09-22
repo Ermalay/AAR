@@ -7,9 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.libaar.ChoiceDialog;
-import com.example.libaar.Dialog;
+import com.example.libaar.IncomeText;
 import com.example.libaar.MyFlexbox;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 
 /**
@@ -21,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
             "тут какой-то длинный kavkazoff@gmail.com текст kavkazoff@gmail.com " +
             "со всякими подробностями и фигулинками и про булочки, " +
             "чай и прочее и kavkazoff@mail.ru что-то ещё всякое разное. " +
-            "И дизайнер из меня - барахло! myemailaddress@example.com";
+            "А дизайнер из меня - барахло! myemailaddress@example.com";
 
-//    private Realm realm;
+    private Realm realm;
 
     // класс, наследуемый от FlexboxLayout
     MyFlexbox myFlexbox;
@@ -32,19 +34,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        Realm.init(this);
-//
-//        realm = Realm.getDefaultInstance();
-//        realm.beginTransaction();
-//        Text text = realm.createObject(Text.class);
-//        text.setText(myString);
-//        realm.commitTransaction();
+        // запишем строку в Realm
+        realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        IncomeText incomeText = realm.createObject(IncomeText.class);
+        incomeText.setText(myString);
+        realm.commitTransaction();
 
 
         // передаём текст для обработки и отображения
         myFlexbox = new MyFlexbox(this, myString);
 
         setContentView(myFlexbox);
+    }
+
+    // не забудем закрыть Realm при дестрое активити
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 
     @Override
